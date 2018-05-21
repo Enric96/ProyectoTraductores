@@ -1,0 +1,8 @@
+﻿hr {
+    border-top: 1px solid silver;
+    margin: 15px 0 20px 0;
+}
+a:hover{
+    text-decoration:none;
+    color:blue;
+}

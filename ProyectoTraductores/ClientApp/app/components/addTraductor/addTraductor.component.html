@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registro traductor</title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <h3>{{subtitle}}</h3>
+    <p>{{info}}</p>
+    <hr />
+    <!--FORMULARIO-->
+    <form [formGroup]="TraductorForm" (ngSubmit)="save()" #formDir="ngForm" novalidate class="col-md-8 col-md-offset-2">
+        <!--INTRODUCIR USUARIO-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Usuario">
+                <i class="glyphicon glyphicon-user"></i> Usuario
+                <!--VALIDACION USUARIO-->
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'usuario') && formDir.submitted">
+                    Rellena el campo: "Ususario"
+                </span>
+                <span class="label-danger label" *ngIf="disabled">
+                    No es posible cambiar el nombre de usuario.
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="text" formControlName="usuario" [attr.disabled]="disabled?'':null">
+            </div>
+        </div>
+
+        <!--INTRODUCIR EMAIL-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="CorreoElectronico">
+                <i class="glyphicon glyphicon-envelope"></i> Email
+                <!--VALIDACION EMAIL-->
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'correoElectronico') && formDir.submitted">
+                    Rellena el campo: "Email"
+                </span>
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('pattern', 'correoElectronico') && formDir.submitted">
+                    {{correoElectronico.value}} no es un mail válido
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="email" formControlName="correoElectronico">
+            </div>
+        </div>
+
+        <!--INTRODUCIR CONTRASEÑA-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Contrasena">
+                <i class="glyphicon glyphicon-lock"></i> Contraseña
+                <!--VALIDACION CONTRASEÑA-->
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'contrasena') && formDir.submitted">
+                    Rellena el campo: "Contraseña"
+                </span>
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('pattern', 'contrasena') && formDir.submitted">
+                    La contraseña ha de tener números y letras, con un mínimo de 2 y un máximo de 40 caracteres
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" [type]="hide ? 'password' : 'text'" formControlName="contrasena">
+                <!--OJO MOSTRAR/OCULTAR CONTRASEÑA-->
+                <a title="{{hide? 'Mostrar contraseña' : 'Ocultar contraseña'}}" class="verpass letra tamojo {{hide ? 'glyphicon glyphicon-eye-close' : 'glyphicon glyphicon-eye-open'}}" (click)="hide = !hide"></a>
+            </div>
+
+        </div>
+
+        <!--INTRODUCIR NOMBRE-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Nombre">
+                Nombre
+                <!--VALIDACION NOMBRE-->
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'nombre') && formDir.submitted">
+                    Rellena el campo: "Nombre"
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="text" formControlName="nombre" data-val="true">
+            </div>
+        </div>
+
+        <!--INTRODUCIR APELLIDOS-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Apellidos">
+                Apellidos
+                <!--VALIDACION APELLIDOS-->
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'apellidos') && formDir.submitted">
+                    Rellena el campo: "Apellidos"
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="text" formControlName="apellidos" data-val="true">
+            </div>
+        </div>
+
+        <!--INTRODUCIR TELEFONO-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12 " for="Telefono">
+                <i class="glyphicon glyphicon-earphone"></i> Telefono
+                <!--VALIDACION TELEFONO-->
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'telefono') && formDir.submitted">
+                    Rellena el campo: "Telefono".
+                </span>
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('pattern', 'telefono') && formDir.submitted">
+                    El campo "Telefono" debe contener 9 números
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="text" formControlName="telefono" data-val="true">
+            </div>
+        </div>
+
+        <!--INTRODUCIR CP-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="CP">
+                Código Postal (CP)
+                <!--VALIDACION CP-->
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'cp') && formDir.submitted">
+                    Rellena el campo: "Código Postal (CP)".
+                </span>
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('pattern', 'cp') && formDir.submitted">
+                    El campo "Código Postal (CP)" debe contener 5 números
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="text" formControlName="cp" data-val="true">
+            </div>
+        </div>
+
+        <!--INTRODUCIR Imagen-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Imagen">
+                <i class="glyphicon glyphicon-picture"></i>
+                Imagen de perfil
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'imagen') && formDir.submitted">
+                    Añade una imagen de perfil".
+                </span>
+            </label>
+            <div>
+                <select class="form-control tam imagenel" formControlName="imagen" (change)="cargaimg()">
+                    <option disabled>**Selecciona una foto de perfil**</option>
+                    <option value="{{imgen[0]}}" selected="selected">Bart Simpson</option>
+                    <option value="{{imgen[1]}}">Lisa Simpson</option>
+                    <option value="{{imgen[2]}}">Homer Simpson</option>
+                    <option value="{{imgen[3]}}">Maggie Simpson</option>
+                    <option value="{{imgen[4]}}">Marge Simpson</option>
+                    <option value="{{imgen[5]}}">Batman</option>
+                    <option value="{{imgen[6]}}">Gandalf</option>
+                    <option value="{{imgen[7]}}">Mickey</option>
+                    <option value="{{imgen[8]}}">R2D2</option>
+                    <option value="{{imgen[9]}}">Vader</option>
+                </select>
+                
+                <div *ngIf="imgvalue">
+                    <img src="{{imgvalue}}" alt="no carga" />
+                </div>
+            </div>
+        </div>
+
+        <!--BOTONES SIGUIENTE/ATRAS-->
+        <div class="form-group botones">
+            <button type="submit" class="btn btn-default">Siguiente</button>
+            <button class="btn" (click)="cancel()">Atrás</button>
+        </div>
+    </form>
+</body>
+</html>

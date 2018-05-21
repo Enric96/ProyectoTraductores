@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class='main-nav'>
+        <div class='navbar navbar-inverse'>
+            <div class='navbar-header'>
+                <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' [routerLink]="['/index']">Traductores</a>
+            </div>
+            
+            <div class='clearfix'></div>
+            <div class='navbar-collapse collapse'>
+                <ul class='nav navbar-nav'>
+                    <!--INDEX (TODOS)-->
+                    <li [routerLinkActive]="['link-active']">
+                        <a [routerLink]="['/index']">
+                            <span class='glyphicon glyphicon-home'></span> Pagina principal
+                        </a>
+                    </li>
+                    <!--PERFIL (USUARIO)-->
+                    <li [routerLinkActive]="['link-active']" class="{{usu}}">
+                        <a [routerLink]="['/fetcha-Traductor']">
+                            <span class='glyphicon glyphicon-user'></span> Perfil
+                        </a>
+                    </li>
+                    <!--TODOS TRADUCTORES (ADMIN)-->
+                    <li [routerLinkActive]="['link-active']" class="{{adm}}">
+                        <a [routerLink]="['/fetch-Traductor']">
+                            <span class='glyphicon glyphicon-globe'></span> Traductores
+                        </a>
+                    </li>
+                    <!--TODOS IDIOMAS-SERVICIOS (ADMIN)-->
+                    <li [routerLinkActive]="['link-active']" class="{{adm}}">
+                        <a [routerLink]="['/fetch-Idioma']">
+                            <span class='glyphicon glyphicon-briefcase'></span> Idiomas/Servicios
+                        </a>
+                    </li>
+                    <!--CERRAR SESION (USUARIO)-->
+                    <li [routerLinkActive]="['link-active']" class="{{usu}}">
+                        <a [routerLink]="['/cerrarsesion']">
+                            <span class='glyphicon  glyphicon-log-out'></span> Cerrar sesión
+                        </a>
+                    </li>
+                    <li><button (click)="inices()" class="cargarbotones">Ver menú completo</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

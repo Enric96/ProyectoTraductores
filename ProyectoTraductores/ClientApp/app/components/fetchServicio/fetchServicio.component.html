@@ -1,0 +1,25 @@
+﻿<h1>Servicios</h1>
+<p>Estos son todos los servicios disponibles.</p>
+<p *ngIf="!serList"><em>Cargando </em><img src="../carga.gif" alt="Cargando" style="height:40px; width:40px"></p>
+<!--TABLA-->
+<table class='table col-md-12' *ngIf="serList">
+    <thead>
+        <!--TITULO-->
+        <tr>
+            <th>Servicios</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--DATOS-->
+        <tr *ngFor="let ser of serList">
+            <td>{{ ser.servicio }}</td>
+            <td>
+                <!--LINK BORRAR-->
+                <a [routerLink]="" (click)='delete(ser.servicio)'><i class="glyphicon glyphicon-trash"></i> Borrar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h4>
+    <a [routerLink]="['/register-Servicio']"><i class="glyphicon glyphicon-plus"></i> Añade un Servicio</a>
+</h4>

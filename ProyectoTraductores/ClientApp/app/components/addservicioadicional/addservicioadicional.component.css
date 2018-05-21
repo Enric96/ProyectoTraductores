@@ -1,0 +1,74 @@
+﻿/* Container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Oculta el checkbox por defecto */
+.container input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Crea un nuevo checkbox */
+.checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: black 1px solid;
+}
+
+/* Con el raton por encima pone el fondo de color gris */
+.container:hover input ~ .checkmark{
+    background-color: #ccc;
+}
+
+/* Cuando el checkbox esta 'checked', el fondo no cambia */
+.container input:checked ~ .checkmark {
+    background-color: white;
+    border: black 1px solid;
+}
+
+/* Cuando el checkbox está 'disabled', el fondo cambia a negro */
+.container input:disabled ~ .checkmark {
+    background-color: black;
+    cursor: not-allowed;
+    border: black 1px solid;
+}
+
+/* Indicador check, oculto si no esta checked */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Muestra el indicador check cuando esta checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Estilo indicador check */
+.container .checkmark:after {
+    content: '✔';
+    color: black;
+    left: 3.5px;
+}
+
+hr {
+    border-top: 1px solid silver;
+    margin: 15px 0 20px 0;
+    width: 100%;
+}

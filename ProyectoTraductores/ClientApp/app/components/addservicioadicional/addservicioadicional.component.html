@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Añadir Servicios</title>
+</head>
+<body>
+    <h1>Añadir</h1>
+    <h3>Servicios</h3>
+    <hr />
+    <form (ngSubmit)="enviar()" #formdir="ngForm" novalidate>
+        <!--TABLA SERVICIOS-->
+        <table class="table col-md-12" *ngIf="serList">
+            <thead>
+                <!--TITULO SERVICIOS-->
+                <tr>
+                    <th>Selecciona los servicios que domines</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--DATOS SERVICIOS-->
+                <tr *ngFor="let ser of serList">
+                    <td>
+                        <label class="container">
+                            {{ ser.servicio }}
+                            <input type="checkbox" class="chkbxs checkbox-inline" value="{{ ser.id }}"/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--BOTONES ACEPTAR/ATRAS-->
+        <button type="submit" class="btn btn-default">Aceptar</button>
+        <button class="btn" (click)="cancelar()">Atrás</button>
+    </form>
+</body>
+</html>

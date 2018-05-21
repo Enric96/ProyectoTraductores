@@ -1,0 +1,20 @@
+﻿/*MENSAJE TRADUCTOR NO ENCONTRADO*/
+.nocp{
+    color: red;
+    border: solid 2px red;
+}
+
+hr{
+    border-top: 1px solid silver;
+    margin: 15px 0 20px 0;
+    width:100%;
+}
+
+.verhr{
+    color:white;
+}
+
+a:hover{
+    text-decoration:none;
+    color:blue;
+}

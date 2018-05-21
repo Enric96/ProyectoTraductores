@@ -1,0 +1,40 @@
+﻿/*MENSAJE ERROR NO LOGEADO*/
+.notr {
+    color: red;
+    border: solid 2px red;
+}
+hr {
+    border-top: 1px solid;
+    margin: 15px 0 20px 0;
+    color:silver;
+    width: 100%
+}
+.verhr {
+    color: white;
+}
+a:hover{
+    text-decoration: none;
+    color:blue;
+}
+
+.footer{
+    position:fixed;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.87);
+    width:100%;
+    left:0;
+}
+
+.footerdentro{
+    color:white;
+    text-align:center;
+}
+
+.imagen {
+   border: solid 1px black;
+   margin: 10px;
+}
+
+.mrgbottom{
+    margin-bottom:60px;
+}

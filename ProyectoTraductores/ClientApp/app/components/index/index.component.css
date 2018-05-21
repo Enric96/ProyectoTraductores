@@ -1,0 +1,31 @@
+﻿.letra2 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+hr {
+    border-top: 1px solid silver;
+    margin: 15px 0 20px 0;
+}
+
+.botones {
+    margin-left: -15px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.87);
+    width:100%;
+    left:0;
+    
+}
+
+.footerdentro{
+    color: white;
+    text-align: center;
+}
+
+.mrgbottom {
+    margin-bottom: 75px;
+}

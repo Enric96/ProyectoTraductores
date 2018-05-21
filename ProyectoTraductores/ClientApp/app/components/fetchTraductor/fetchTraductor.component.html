@@ -1,0 +1,43 @@
+﻿<h1>Traductores</h1>
+<p>Estos son todos los traductores registrados.</p>
+<p *ngIf="!traList">
+    <em>Cargando </em><img src="../carga.gif" alt="Cargando" style="height:40px; width:40px">
+    <!--TABLA-->
+    <table class='table col-md-6' *ngIf="traList">
+        <thead>
+            <!--TITULOS-->
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Contraseña</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Telefono</th>
+                <th>CP</th>
+                <th>Imagen perfil</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--DATOS-->
+            <tr *ngFor="let tra of traList">
+                <td>{{ tra.id }}</td>
+                <td>{{ tra.usuario }}</td>
+                <td>{{ tra.correoElectronico }}</td>
+                <td>{{ tra.contrasena }}</td>
+                <td>{{ tra.nombre }}</td>
+                <td>{{ tra.apellidos }}</td>
+                <td>{{ tra.telefono }}</td>
+                <td>{{ tra.cp }}</td>
+                <td><img src="{{ tra.imagen }}"/></td>
+                <td>
+                    <!--LINKS EDITAR/BORRAR-->
+                    <a [routerLink]="['/Traductor/edit/', tra.id]"><i class="glyphicon glyphicon-edit"></i> Editar</a> |
+                    <a [routerLink]="" (click)="delete(tra.id, tra.usuario)"><i class="glyphicon glyphicon-trash"></i> Borrar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<h4>
+    <a [routerLink]="['/register-Traductor']"><i class="glyphicon glyphicon-plus"></i> Añadir traductor</a>
+</h4>

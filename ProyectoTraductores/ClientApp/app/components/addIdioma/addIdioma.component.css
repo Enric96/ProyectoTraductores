@@ -1,0 +1,12 @@
+﻿hr {
+    border-top: 1px solid silver;
+    margin: 15px 0 20px 0;
+    width: 100%;
+}
+.botones{
+    margin-left: -15px;
+}
+
+.letra {
+    font-size: 16px;
+}

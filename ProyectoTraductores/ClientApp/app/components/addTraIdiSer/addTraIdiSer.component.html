@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registro Idiomas y Servicios</title>
+</head>
+<body>
+    <h1>Registro</h1>
+    <h3>Idiomas</h3>
+    <h3>y</h3>
+    <h3>Servicios</h3>
+    <hr />
+    <form (ngSubmit)="enviar()" #formDir="ngForm" novalidate>
+        <!--TABLA IDIOMAS-->
+        <table class="table col-md-12" *ngIf="idiList">
+            <thead>
+                <!--TITULO IDIOMA-->
+                <tr>
+                    <th>Selecciona los idiomas que domines.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--DATOS IDIOMA CON CHECKBOX-->
+                <tr *ngFor="let idi of idiList">
+                    <td>
+                        <label class="container">
+                            {{idi.idioma}}
+                            <input type="checkbox" class="chkbxi checkbox-inline" value="{{idi.id}}" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+        <!--TABLA SERVICIOS-->
+        <table class="table col-md-12" *ngIf="serList">
+            <thead>
+                <!--TITULO SERVICIOS-->
+                <tr>
+                    <th>Selecciona los servicios que domines</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--DATOS SERVICIOS CON CHECKBOX-->
+                <tr *ngFor="let ser of serList">
+                    <td>
+                        <label class="container">
+                            {{ser.servicio}}
+                            <input type="checkbox" class="chkbxs checkbox-inline" value="{{ser.id}}" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--BOTONES ACEPTAR - ATRAS-->
+        <button type="submit" class="btn btn-default">Guardar</button>
+        <button class="btn" (click)="cancelar()">No añadir</button>
+    </form>
+</body>
+</html>

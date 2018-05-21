@@ -1,0 +1,19 @@
+﻿.centro{
+    text-align:center;
+}
+
+.butsi {
+    background-color: green;
+    height: 75px;
+    width: 75px;
+    font-size: 35px;
+    color: white;
+}
+
+.butno {
+    background-color: red;
+    height: 75px;
+    width: 75px;
+    font-size: 35px;
+    color: white;
+}

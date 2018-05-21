@@ -1,0 +1,28 @@
+﻿<h1>Idiomas</h1>
+<p>Estos son todos los idiomas disponibles.</p>
+<p *ngIf="!idiList">
+    <em>Cargando</em><img src="../carga.gif" alt="Cargando" style="height:40px; width:40px">
+    <!--TABLA-->
+    <table class='table col-md-6' *ngIf="idiList">
+        <thead>
+            <!--TITULO-->
+            <tr>
+                <th>Idiomas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--DATOS-->
+            <tr *ngFor="let idi of idiList">
+                <td>{{ idi.idioma }}</td>
+                <td>
+                    <!--LINK BORRAR-->
+                    <a [routerLink]="" (click)="delete(idi.idioma)"><i class="glyphicon glyphicon-trash"></i> Borrar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<h4>
+    <a [routerLink]="['/register-Idioma']"><i class="glyphicon glyphicon-plus"></i> Añade un Idioma</a>
+</h4>
+<hr />
+<fetchServicio></fetchServicio>

@@ -1,0 +1,10 @@
+﻿.centro {
+    text-align: center;
+}
+a:hover {
+    text-decoration: none;
+    color: blue;
+}
+img {
+    width: 80%;
+}

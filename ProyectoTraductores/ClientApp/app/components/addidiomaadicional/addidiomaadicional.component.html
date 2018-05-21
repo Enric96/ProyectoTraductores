@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Añadir Idiomas</title>
+</head>
+<body>
+    <h1>Añadir</h1>
+    <h3>Idiomas</h3>
+<hr />
+    <form (ngSubmit)="enviar()" #formDir="ngForm" novalidate>
+        <!--TABLA IDIOMAS-->
+        <table class="table col-md-12" *ngIf="idiList">
+            <thead>
+                <!--TITULO IDIOMA-->
+                <tr>
+                    <th>Selecciona los idiomas que domines.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--DATOS IDIOMAS-->
+                <tr *ngFor="let idi of idiList">
+                    <td>
+                        <label class="container">
+                            {{idi.idioma}}
+                            <input type="checkbox" class="chkbxi checkbox-inline" value="{{idi.id}}" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--BOTONES ACEPTAR/ATRAS-->
+        <button type="submit" class="btn btn-default">Aceptar</button>
+        <button class="btn" (click)="cancelar()">Atrás</button>
+    </form>
+</body>
+</html>

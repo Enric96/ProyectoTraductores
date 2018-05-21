@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Buscar</title>
+</head>
+<body>
+    <h1>Busca traductores</h1>
+    <p>En esta web podrás buscar todos los traductores disponibles dependiendo del CP, idioma y servicio que busques.</p>
+    <hr />
+    <!--FORMULARIO-->
+    <form [formGroup]="CPForm" (ngSubmit)="buscar()" #formDir="ngForm" novalidate class="mrgbottom">
+        <div class="col-md-8 col-md-offset-2">
+            <h2>Busca entre nuestros traductores</h2>
+            <br /><br />
+            <!--INTRODUCIR CP-->
+            <div class="form-group row">
+                <label class="letra2 control-label col-md-12" for="cp">
+                    Código Postal (CP)
+                    <!--VALIDACION CP-->
+                    <span class="label-danger label" *ngIf="CPForm.hasError('required', 'cp') && formDir.submitted">
+                        Rellena el campo: "Código Postal (CP)".
+                    </span>
+                    <span class="label-danger label" *ngIf="CPForm.hasError('pattern', 'cp') && formDir.submitted">
+                        El campo "Código Postal (CP)", debe contener 5 numeros.
+                    </span>
+                </label>
+                <div>
+                    <input class="form-control" type="text" formControlName="cp">
+                </div>
+            </div>
+            <!--INTRODUCIR IDIOMA-->
+            <div class="form-group row">
+                <label class="letra2 control-label col-md-12" for="idioma">
+                    Idioma
+                    <!--VALIDACION IDIOMA-->
+                    <span class="label-danger label" *ngIf="CPForm.hasError('required', 'idioma') && formDir.submitted">
+                        Rellena el campo: "Idioma".
+                    </span>
+                </label>
+                <div>
+                    <select class="form-control" formControlName="idioma" *ngIf="idiList">
+                        <option disabled>**Selecciona un idioma**</option>
+                        <option *ngFor="let idi of idiList" value="{{ idi.idioma }}">{{ idi.idioma }}</option>
+                    </select>
+                </div>
+            </div>
+            <!--INTRODUCIR SERVICIO-->
+            <div class="form-group row">
+                <label class="letra2 control-label col-md-12" for="servicio">
+                    Servicio
+                    <!--VALIDACION SERVICIO-->
+                    <span class="label-danger label" *ngIf="CPForm.hasError('required', 'servicio') && formDir.submitted">
+                        Rellena el campo: "Servicio".
+                    </span>
+                </label>
+                <div>
+                    <select class="form-control" formControlName="servicio" *ngIf="serList">
+                        <option disabled>**Selecciona un servicio**</option>
+                        <option *ngFor="let ser of serList" value="{{ ser.servicio }}">{{ ser.servicio }}</option>
+                    </select>
+                </div>
+            </div>
+            <!--BOTON BUSCARS-->
+            <button type="submit" class="btn btn-default botones">Buscar</button>
+
+        </div>
+        <!--LOGIN/REGISTRO-->
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <hr />
+            <p>Eres traductor? Forma parte de esta web o si ya formas parte entra.</p>
+            <div class="form-group">
+                <button class="btn" (click)="login()">Entrar/Registrarse</button>
+            </div>
+        </div>
+    </form>
+    <div class="footer">
+        <div class="footerdentro"> <h6>Búsqueda de traductores <i class="glyphicon glyphicon-copyright-mark"></i></h6>
+        <h6><i class="glyphicon glyphicon-envelope"></i> Email de contacto: buscatraductor@traductores.es</h6>
+        </div>
+    </div>
+</body>
+</html>
