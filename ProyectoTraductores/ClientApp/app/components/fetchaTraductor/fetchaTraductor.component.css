@@ -38,8 +38,8 @@ a:hover{
 .imagen {
    border: solid 2px black;
    margin: 10px;
-   width:50%;
-   height:50%;
+   width:90px;
+   height:90px;
 }
 
 .tdimg{
@@ -58,6 +58,7 @@ a:hover{
 .tabla {
     margin-bottom: 100px;
 }
+
 td {
     max-width:100px; 
     overflow:hidden;
@@ -66,4 +67,10 @@ td {
 
 .ss {
     word-break: break-word;
+}
+
+.fitxa {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    text-align: center;
 }

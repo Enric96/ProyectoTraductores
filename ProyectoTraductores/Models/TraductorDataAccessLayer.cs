@@ -85,6 +85,8 @@ namespace ASPCoreWithAngular.Models
         //Actualizar traductor (Editar perfil)
         public int UpdateTraductor(Traductor traductor)
         {
+            Byte[] bytes = File.ReadAllBytes(@"C:\Users\egonzalez\Desktop\assets\FotosPerfil\FotoPerfil.jpg");
+            String img64 = Convert.ToBase64String(bytes);
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -99,7 +101,7 @@ namespace ASPCoreWithAngular.Models
                     cmd.Parameters.AddWithValue("@Apellidos", traductor.Apellidos);
                     cmd.Parameters.AddWithValue("@Telefono", traductor.Telefono);
                     cmd.Parameters.AddWithValue("@CP", traductor.CP);
-                    cmd.Parameters.AddWithValue("@Imagen", traductor.Imagen);
+                    cmd.Parameters.AddWithValue("@Imagen", img64);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -389,6 +391,7 @@ namespace ASPCoreWithAngular.Models
                         traidiser.CorreoElectronico = rdr["CorreoElectronico"].ToString();
                         traidiser.Telefono = rdr["Telefono"].ToString();
                         traidiser.CP = rdr["CP"].ToString();
+                        traidiser.Imagen = rdr["Imagen"].ToString();
                         traidiser.IDIdioma = Convert.ToInt32(rdr["IDIdioma"]);
                         traidiser.Idioma = rdr["Idioma"].ToString();
                         traidiser.IDServicio = Convert.ToInt32(rdr["IDServicios"]);

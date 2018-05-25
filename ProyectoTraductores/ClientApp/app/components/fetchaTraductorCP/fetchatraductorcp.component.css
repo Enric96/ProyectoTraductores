@@ -6,14 +6,10 @@
     top:40vh;
 }
 
-hr{
-    border-top: 1px solid silver;
+hr {
+    border-top: 1px solid transparent;
     margin: 15px 0 20px 0;
-    width:100%;
-}
-
-.verhr{
-    color:white;
+    width: 100%;
 }
 
 a:hover{
@@ -24,4 +20,26 @@ a:hover{
 .imgcarga{
     height:40px;
     width:40px;
+}
+
+.imagen {
+    border: solid 2px black;
+    margin: 10px;
+    width: 90px;
+    height: 90px;
+}
+
+.fitxa {
+    border: 1px solid black;
+    margin: 1px;
+    text-align: center;
+    /*background-color: lightgreen;*/
+}
+
+#divCol {
+    padding: 0px !important;
+}
+
+.centro {
+    text-align:center;
 }

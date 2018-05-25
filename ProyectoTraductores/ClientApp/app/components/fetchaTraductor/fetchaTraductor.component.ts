@@ -87,9 +87,9 @@ export class FetchaTraductorComponent {
 
     detalles(nombreSolicitante, descripcion, idioma, servicios, email, telefono) {
         alert(nombreSolicitante + " quiere: " + descripcion 
-+" Para el idioma: " + idioma +" y el servicio: " + servicios 
-+" Email: " + email 
-+" Telefono: " +telefono);
++"\nPara el idioma: " + idioma +" y el servicio: " + servicios 
++"\nEmail: " + email 
++"\nTelefono: " +telefono);
     }
 
     borrar(idp, nombre) {

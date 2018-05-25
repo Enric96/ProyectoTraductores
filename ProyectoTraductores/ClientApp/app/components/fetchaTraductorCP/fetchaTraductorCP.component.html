@@ -1,13 +1,13 @@
-﻿<div *ngIf="tracpList !=''">
+﻿<div *ngIf="tracpList !=''" class="col-md-12">
     <h1>Traductores</h1>
     <p>Estos son los traductores que coinciden con tus criterios de búsqueda o próximos a ellos.</p>
     <p *ngIf="!tracpList">
         <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
     </p>
     <!--TABLA-->
-    <table class='table col-md-12' *ngIf="tracpList">
+    <!--<table class='table col-md-12' *ngIf="tracpList">
         <thead>
-            <!--TITULOS-->
+        
             <tr>
                 <th>Nombre</th>
                 <th>Apellidos</th>
@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <!--DATOS-->
+           
             <tr *ngFor="let tracp of tracpList">
                 <td>{{ tracp.nombre }}</td>
                 <td>{{ tracp.apellidos }}</td>
@@ -33,8 +33,26 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table>-->
 
+    <div *ngIf="tracpList">
+        <div>
+            <p>
+                CP: {{ tracpList[0].cp }}<br />
+                Idioma: {{ tracpList[0].idioma }}<br />
+                Servicio: {{ tracpList[0].servicios }}<br />
+            </p>
+        </div>
+        <div *ngFor="let tracp of tracpList" id="divCol" class="col-md-6">
+            <div class="fitxa bg-success">
+                <img class="imagen img-circle" src="data:image/jpeg;base64,{{tracp.imagen}}" />
+                <h1>Nombre: {{ tracp.nombre }} {{ tracp.apellidos }}</h1>
+                <h1>Email: {{ tracp.correoElectronico }}</h1>
+                <h1>Telefono: {{ tracp.telefono }}</h1>
+                <h1><a [routerLink]="" (click)="enviar(tracp.idTraductor, tracp.idIdioma, tracp.idServicio)"><i class="glyphicon glyphicon-briefcase"></i> contratar</a></h1>
+            </div>
+        </div>
+    </div>
     <hr />
     <!--MENSAJE SI NO EXISTE-->
     <h1 [routerLinkActive]="['link-active']">

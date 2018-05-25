@@ -1,22 +1,13 @@
 ﻿<div *ngIf="traList!=''">
-    <div class="col-md-6 pull-left">
         <h1>Perfil</h1>
         <p>Estos son tus datos, idiomas y servicios.</p>
-    </div>
-    <div class="col-md-6" *ngIf="traList">
-        <table class="pull-right">
-            <tr *ngFor="let tra of traList">
-                <td class="tdimg"><img class="imagen img-circle" src="data:image/jpeg;base64,{{tra.imagen}}" /></td>
-            </tr>
-        </table>
-    </div>
     <p *ngIf="!traList">
         <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
     </p>
     <!--TABLA TRADUCTOR-->
-    <table class='table col-md-12' *ngIf="traList">
+    <!--<table class='table col-md-12' *ngIf="traList">
         <thead>
-            <!--TITULO TRADUCTOR-->
+            
             <tr>
                 <th>Usuario</th>
                 <th>Email</th>
@@ -27,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <!--DATOS TRADUCTOR-->
+
             <tr *ngFor="let tra of traList">
                 <td>{{ tra.usuario }}</td>
                 <td>{{ tra.correoElectronico }}</td>
@@ -36,15 +27,28 @@
                 <td>{{ tra.telefono }}</td>
                 <td>{{ tra.cp }}</td>
                 <td>
-                    <!--LINK EDITAR TRADUCTOR-->
+                   
                     <a [routerLink]="['/Traductor/edit/', tra.id]"><i class="glyphicon glyphicon-edit"></i> Editar</a>
                 </td>
             </tr>
         </tbody>
-    </table>
-    <hr />
-    <div class="col-md-12">
-        <div class="col-md-6">
+    </table>-->
+    <div *ngIf="traList">
+        <div *ngFor="let tra of traList" class="col-md-6">
+            <div class="fitxa bg-success">
+                <img class="imagen img-circle" src="data:image/jpeg;base64,{{tra.imagen}}"/>
+                <h1>Usuario: {{tra.usuario}}</h1>
+                <h1>Nombre: {{tra.nombre}} {{tra.apellidos}}</h1>
+                <h1>Email: {{tra.correoElectronico}}</h1>
+                <h1>Telefono: {{tra.telefono}}</h1>
+                <h1>CP: {{tra.cp}}</h1>
+                <h1> <a [routerLink]="['/Traductor/edit/', tra.id]"><i class="glyphicon glyphicon-edit"></i> Editar</a></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="col-md-12">
             <p *ngIf="!idiList">
                 <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
             </p>
@@ -67,7 +71,8 @@
             <!--LINK AÑADIR IDIOMA-->
             <h4><a [routerLink]="['/add-Idioma-Adicional']"><i class="glyphicon glyphicon-plus"></i> Añadir idiomas</a></h4>
         </div>
-        <div class="col-md-6">
+        <hr />
+        <div class="col-md-12">
             <p *ngIf="!serList">
                 <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
             </p>
