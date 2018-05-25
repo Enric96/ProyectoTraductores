@@ -1,16 +1,18 @@
-﻿<div class="col-md-6 pull-left">
-    <h1>Perfil</h1>
-    <p>Estos son tus datos, idiomas y servicios.</p>
-</div>
-<div class="col-md-6" *ngIf="traList">
-    <table class="pull-right">
-        <tr *ngFor="let tra of traList">
-        <td><img class="imagen" src="{{tra.imagen}}" /></td>
-        </tr>
-</table>
-</div>
-<p *ngIf="!traList">
-    <em>Cargando </em><img src="../carga.gif" alt="Cargando" style="height:40px; width:40px">
+﻿<div *ngIf="traList!=''">
+    <div class="col-md-6 pull-left">
+        <h1>Perfil</h1>
+        <p>Estos son tus datos, idiomas y servicios.</p>
+    </div>
+    <div class="col-md-6" *ngIf="traList">
+        <table class="pull-right">
+            <tr *ngFor="let tra of traList">
+                <td class="tdimg"><img class="imagen img-circle" src="data:image/jpeg;base64,{{tra.imagen}}" /></td>
+            </tr>
+        </table>
+    </div>
+    <p *ngIf="!traList">
+        <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
+    </p>
     <!--TABLA TRADUCTOR-->
     <table class='table col-md-12' *ngIf="traList">
         <thead>
@@ -40,56 +42,97 @@
             </tr>
         </tbody>
     </table>
-    <!--ERROR USUARIO MAL LOGEADO-->
-    <h1 *ngIf="traList == ''" class="col-md-12 notr">No has realizado el login correctamente, <a [routerLink]="['/logreg']">vuelve a intentarlo</a></h1>
     <hr />
-<p *ngIf="!idiList">
-    <em>Cargando </em><img src="../carga.gif" alt="Cargando" style="height:40px; width:40px">
-</p>
-<!--TABLA IDIOMAS-->
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <p *ngIf="!idiList">
+                <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
+            </p>
+            <!--TABLA IDIOMAS-->
+            <table class='table col-md-12' *ngIf="idiList">
+                <thead>
+                    <!--TITULO IDIOMAS-->
+                    <tr>
+                        <th>Idiomas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--DATOS IDIOMAS-->
+                    <tr *ngFor="let idi of idiList">
+                        <td>{{ idi.idioma }}</td>
+                        <td><a [routerLink]="" (click)="deleteIdioma(idi.idIdioma, idi.idioma)"><i class="glyphicon glyphicon-trash"></i> Borrar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--LINK AÑADIR IDIOMA-->
+            <h4><a [routerLink]="['/add-Idioma-Adicional']"><i class="glyphicon glyphicon-plus"></i> Añadir idiomas</a></h4>
+        </div>
+        <div class="col-md-6">
+            <p *ngIf="!serList">
+                <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
+            </p>
+            <!--TABLA SERVICIOS-->
+            <table class='table col-md-12' *ngIf="serList">
+                <thead>
+                    <!--TITULO SERVICIOS-->
+                    <tr>
+                        <th>Servicios</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--DATOS SERVICIOS-->
+                    <tr *ngFor="let ser of serList">
+                        <td>{{ ser.servicios }}</td>
+                        <td><a [routerLink]="" (click)="deleteServicios(ser.idServicio, ser.servicios)"><i class="glyphicon glyphicon-trash"></i> Borrar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--LINK AÑADIR SERVICIO-->
+            <h4 class="mrgbottom"><a [routerLink]="['/add-Servicio-Adicional']"><i class="glyphicon glyphicon-plus"></i> Añadir servicios</a></h4>
+        </div>
+    </div>
+    <hr />
 
-<table class='table col-md-12' *ngIf="idiList">
-    <thead>
-        <!--TITULO IDIOMAS-->
-        <tr>
-            <th>Idiomas</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!--DATOS IDIOMAS-->
-        <tr *ngFor="let idi of idiList">
-            <td>{{ idi.idioma }}</td>
-            <td><a [routerLink]="" (click)="deleteIdioma(idi.idIdioma, idi.idioma)"><i class="glyphicon glyphicon-trash"></i> Borrar</a></td>
-        </tr>
-    </tbody>
-</table>
-<!--LINK AÑADIR IDIOMA-->
-<h4><a [routerLink]="['/add-Idioma-Adicional']"><i class="glyphicon glyphicon-plus"></i> Añadir idiomas</a></h4>
-<hr />
-<p *ngIf="!serList">
-    <em>Cargando </em><img src="../carga.gif" alt="Cargando" style="height:40px; width:40px">
-    <!--TABLA SERVICIOS-->
-    <table class='table col-md-12' *ngIf="serList">
-        <thead>
-            <!--TITULO SERVICIOS-->
-            <tr>
-                <th>Servicios</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--DATOS SERVICIOS-->
-            <tr *ngFor="let ser of serList">
-                <td>{{ ser.servicios }}</td>
-                <td><a [routerLink]="" (click)="deleteServicios(ser.idServicio, ser.servicios)"><i class="glyphicon glyphicon-trash"></i> Borrar</a></td>
-            </tr>
-        </tbody>
-    </table>
-    <!--LINK AÑADIR SERVICIO-->
-    <h4 class="mrgbottom"><a [routerLink]="['/add-Servicio-Adicional']"><i class="glyphicon glyphicon-plus"></i> Añadir servicios</a></h4>
-
+    <!--PETICIONES-->
+    <h2>Peticiones de contratacion</h2>
+    <div *ngIf="petList != ''">
+        <p *ngIf="!petList">
+            <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga" />
+        </p>
+        <table class="table tabla col-md-12" *ngIf="serList">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Idioma</th>
+                    <th>Servicios</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pet of petList">
+                    <td>{{pet.nombreSolicitante}}</td>
+                    <td>{{pet.idioma}}</td>
+                    <td>{{pet.servicios}}</td>
+                    <td>{{pet.email}}</td>
+                    <td>{{pet.telefono}}</td>
+                    <td>
+                        <a [routerLink]="" (click)="detalles(pet.nombreSolicitante, pet.descripcion, pet.idioma, pet.servicios, pet.email, pet.telefono)">Ver detalles</a>|
+                        <a [routerLink]="" (click)="borrar(pet.id, pet.nombreSolicitante)"><i class="glyphicon glyphicon-trash"></i>Borrar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <h3 *ngIf="petList == ''">No tienes peticiones pendientes</h3>
     <div class="footer">
         <div class="footerdentro">
             <h6>Si tiene algún problema con el perfil, o quiere darse de baja,</h6>
             <h6>contacte con el administrador de la web (Admin@adminmail.es)</h6>
         </div>
     </div>
+</div>
+
+<!--ERROR USUARIO MAL LOGEADO-->
+<h1 *ngIf="traList == ''" class="col-md-12 notr">No has realizado el login correctamente, <br /><a [routerLink]="['/logreg']">vuelve a intentarlo</a></h1>

@@ -41,6 +41,30 @@ namespace ProyectoTraductores.Controllers
             return objTraductor.GetCPIdiSerTraductor(cp, idioma, servicio);
         }
 
+        //Peticion de Traductor
+        [HttpPost]
+        [Route("api/Traductor/Peticion")]
+        public int Peticion([FromBody] Peticion peticion)
+        {
+            return objTraductor.AddPeticion(peticion);
+        }
+
+        //Ver Peticiones
+        [HttpGet]
+        [Route("api/Traductor/VerPeticion/{idTraductor}")]
+        public List<Peticion> VerPeticion(int idTraductor)
+        {
+            return objTraductor.GetAllPeticiones(idTraductor);
+        }
+
+        //Eliminar Peticion
+        [HttpDelete]
+        [Route("api/Traductor/ElimPeticion/{id}")]
+        public int ElimPeticion(int id)
+        {
+            return objTraductor.DeletePeticion(id);
+        }
+
         //Añadir traductor
         [HttpPost]
         [Route("api/Traductor/Create")]

@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Enviar Peticion</title>
+</head>
+<body>
+    <h1>Peticion de Servicio</h1>
+    <h3>Rellena los datos correspondientes</h3>
+    <p>El traductor se pondrá en contacto contigo, lo antes posible</p>
+    <hr />
+    <!--FORMULARIO-->
+    <form [formGroup]="PeticionForm" (ngSubmit)="save()" #formDir="ngForm" novalidate class="col-md-8 col-md-offset-2">
+        <!--INTRODUCIR NOMBRE-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Nombre">
+                Nombre del solicitante
+                <!--VALIDACION-->
+                <span class="label label-danger" *ngIf="PeticionForm.hasError('required', 'nombre') && formDir.submitted">
+                    Rellena el campo: "Nombre solicitante", si no quieres dar tu nombre, escribe 'Anónimo'
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="text" formControlName="nombre" />
+            </div>
+        </div>
+
+        <!--INTRODUCIR DESCRIPCION-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Descripcion">
+                <i class="glyphicon glyphicon-align-justify"></i> Descripcion (maximo 1000 caracteres)
+                <!--VALIDACION DESCRIPCION-->
+                <span class="label label-danger" *ngIf="PeticionForm.hasError('required', 'descripcion') && formDir.submitted">
+                    Rellena el campo: "Descripcion", pon una pequeña descripcion de lo que va a tener que traducir el traductor.
+                </span>
+                <span class="label label-danger" *ngIf="PeticionForm.hasError('maxlength', 'descripcion')">
+                    Te has pasado {{descripcion.value.length - 1000}} caracteres.
+                </span>
+            </label>
+            <div>
+                <textarea class="form-control tamdesc" formControlName="descripcion"></textarea>
+                <!--<input class="form-control tamdesc" type="text" formControlName="descripcion" />-->
+            </div>
+        </div>
+
+        <!--INTRODUCIR EMAIL-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Email">
+                <i class="glyphicon glyphicon-envelope"></i> Email
+                <!--VALIDACION EMAIL-->
+                <span class="label-danger label" *ngIf="PeticionForm.hasError('required', 'email') && formDir.submitted">
+                    Rellena el campo: "Email"
+                </span>
+                <span class="label-danger label" *ngIf="PeticionForm.hasError('pattern', 'email') && formDir.submitted">
+                    {{email.value}} no es un mail valido
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="email" formControlName="email" />
+            </div>
+        </div>
+
+        <!--INTRODUCIR TELEFONO-->
+        <div class="form-group row">
+            <label class="letra control-label col-md-12" for="Telefono">
+                <i class="glyphicon glyphicon-earphone"></i> Telefono
+                <!--VALIDACION TELEFONO-->
+                <span class="label label-danger" *ngIf="PeticionForm.hasError('required', 'telefono') && formDir.submitted">
+                    Rellena el campo: "Telefono".
+                </span>
+                <span class="label label-danger" *ngIf="PeticionForm.hasError('pattern', 'telefono') && formDir.submitted">
+                    El campo "Telefono" debe contener 9 números.
+                </span>
+                <span class="label label-danger" *ngIf="PeticionForm.hasError('maxlength', 'telefono')">
+                    El campo "Telefono" debe contener 9 números, te has pasado {{telefono.value.length - 9}} números.
+                </span>
+                <span class="label label-danger" *ngIf="PeticionForm.hasError('minlength', 'telefono')">
+                    El campo "telefono" debe contener 9 números, te faltan {{9 - telefono.value.length}} números.
+                </span>
+            </label>
+            <div>
+                <input class="form-control tam" type="text" formControlName="telefono" />
+            </div>
+        </div>
+
+        <!--BOTON ENVIAR-->
+        <div class="form-group botones">
+            <button type="submit" class="btn btn-default">Enviar</button>
+            <button class="btn" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</body>
+</html>

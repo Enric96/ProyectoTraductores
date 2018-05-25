@@ -25,16 +25,23 @@ export class FetchaTraductorCPComponent {
             data => this.tracpList = data
         )
     }
+
+    enviar(idTraductor, idIdioma, idServicios) {
+        this._router.navigate(['\PeticionTraductor', idTraductor, idIdioma, idServicios]);
+    }
 }
 
 //Lista datos Traductor
 interface TraductorData {
+    idTraductor: number;
     nombre: string;
     apellidos: string;
     correoElectronico: string;
     telefono: string;
     cp: string;
     idioma: string;
+    idIdioma: number;
     servicio: string;
+    idServicios: number;
     imagen: string;
 }

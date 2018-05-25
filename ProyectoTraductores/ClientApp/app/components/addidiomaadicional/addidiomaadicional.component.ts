@@ -23,30 +23,35 @@ export class AddIdiomaAdicional {
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _TraductorService: TraductorService,
         private _IdiomaService: IdiomaService, private _router: Router) {
-        setInterval(() => { this.deshabilitarchkbx(); }, 0);
         this.getIdioma();
-        this.getaIdioma();
     }
 
 
     //Ver todos los idiomas
     getIdioma() {
         this._IdiomaService.getIdioma().subscribe(
-            data => this.idiList = data
+            data => {
+                this.idiList = data;
+                this.getaIdioma();
+            }
         )
+        
     }
 
     getaIdioma() {
         this._TraductorService.getIdiomasHabladosconID(id).subscribe(
-            data => this.idioList = data
+            data => {
+                this.idioList = data;
+                this.deshabilitarchkbx();
+            }
         )
     }
 
     //Deshabvilitar idiomas ya conocidos
     deshabilitarchkbx() {
         var idioma = <any>document.getElementsByClassName("chkbxi");
-        for (var i = 0; i < idioma.length; i++) {
-            for (var ic = 0; ic < this.idioList.length; ic++) {
+        for (var ic = 0; ic < this.idioList.length; ic++) {
+            for (var i = 0; i < idioma.length; i++) {
                 var idi = idioma[i];
                 if (idi.value == this.idioList[ic].idIdioma) {
                     idi.disabled = true;

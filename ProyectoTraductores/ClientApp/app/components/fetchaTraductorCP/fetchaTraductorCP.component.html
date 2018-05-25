@@ -1,9 +1,10 @@
-﻿<h1>Traductores</h1>
-<p>Estos son los traductores que coinciden con tus criterios de búsqueda o próximos a ellos.</p>
-<p *ngIf="!tracpList">
-    <em>Cargando </em><img src="../carga.gif" alt="Cargando" style="height:40px; width:40px">
-</p>
-<!--TABLA-->
+﻿<div *ngIf="tracpList !=''">
+    <h1>Traductores</h1>
+    <p>Estos son los traductores que coinciden con tus criterios de búsqueda o próximos a ellos.</p>
+    <p *ngIf="!tracpList">
+        <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
+    </p>
+    <!--TABLA-->
     <table class='table col-md-12' *ngIf="tracpList">
         <thead>
             <!--TITULOS-->
@@ -27,16 +28,24 @@
                 <td>{{ tracp.cp }}</td>
                 <td>{{ tracp.idioma }}</td>
                 <td>{{ tracp.servicios }}</td>
+                <td>
+                    <a [routerLink]="" (click)="enviar(tracp.idTraductor, tracp.idIdioma, tracp.idServicio)">contratar</a>
+                </td>
             </tr>
         </tbody>
     </table>
-    <h1 *ngIf="tracpList == ''" class="nocp col-md-12">No hemos encontrado ningún traductor que coincida con tus criterios de búsqueda o próximos a ellos.</h1>
-<hr />
-<!--MENSAJE SI NO EXISTE-->
+
+    <hr />
+    <!--MENSAJE SI NO EXISTE-->
     <h1 [routerLinkActive]="['link-active']">
         <!--LINK VOLVER-->
         <a [routerLink]="['/index']">
-            <span><i class="glyphicon glyphion glyphicon-home"></i> Volver a la página principal</span> 
+            <span><i class="glyphicon glyphion glyphicon-home"></i> Volver a la página principal</span>
         </a>
     </h1>
-
+</div>
+<h1 *ngIf="tracpList == ''" class="nocp col-md-12">
+    No hemos encontrado ningún traductor que coincida con tus criterios de búsqueda o próximos a ellos. <br /> <a [routerLink]="['/index']">
+        <span><i class="glyphicon glyphion glyphicon-home"></i> Volver a la página principal</span>
+    </a>
+</h1>

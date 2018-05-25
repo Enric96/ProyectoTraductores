@@ -104,6 +104,12 @@
                 <span class="label-danger label" *ngIf="TraductorForm.hasError('pattern', 'telefono') && formDir.submitted">
                     El campo "Telefono" debe contener 9 números
                 </span>
+                <span class="label label-danger" *ngIf="TraductorForm.hasError('maxlength', 'telefono')">
+                    El campo "telefono" debe contener 9 números, te has pasado {{telefono.value.length - 9}} números.
+                </span>
+                <span class="label-danger label" *ngIf="TraductorForm.hasError('minlength', 'telefono')">
+                    El campo "Telefono" debe contener 9 números, te faltan {{9 - telefono.value.length}} números.
+                </span>
             </label>
             <div>
                 <input class="form-control tam" type="text" formControlName="telefono" data-val="true">
@@ -128,35 +134,51 @@
         </div>
 
         <!--INTRODUCIR Imagen-->
-        <div class="form-group row">
-            <label class="letra control-label col-md-12" for="Imagen">
-                <i class="glyphicon glyphicon-picture"></i>
-                Imagen de perfil
-                <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'imagen') && formDir.submitted">
-                    Añade una imagen de perfil".
-                </span>
-            </label>
-            <div>
-                <select class="form-control tam imagenel" formControlName="imagen" (change)="cargaimg()">
-                    <option disabled>**Selecciona una foto de perfil**</option>
-                    <option value="{{imgen[0]}}" selected="selected">Bart Simpson</option>
-                    <option value="{{imgen[1]}}">Lisa Simpson</option>
-                    <option value="{{imgen[2]}}">Homer Simpson</option>
-                    <option value="{{imgen[3]}}">Maggie Simpson</option>
-                    <option value="{{imgen[4]}}">Marge Simpson</option>
-                    <option value="{{imgen[5]}}">Batman</option>
-                    <option value="{{imgen[6]}}">Gandalf</option>
-                    <option value="{{imgen[7]}}">Mickey</option>
-                    <option value="{{imgen[8]}}">R2D2</option>
-                    <option value="{{imgen[9]}}">Vader</option>
-                </select>
-                
-                <div *ngIf="imgvalue">
-                    <img src="{{imgvalue}}" alt="no carga" />
-                </div>
+        <!--<div class="form-group row">
+        <label class="letra control-label col-md-12" for="Imagen">
+            <i class="glyphicon glyphicon-picture"></i>
+            Imagen de perfil
+            <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'imagen') && formDir.submitted">
+                Añade una imagen de perfil".
+            </span>
+        </label>
+        <div>
+            <select class="form-control tam imagenel" formControlName="imagen" (change)="cargaimg()">
+                <option disabled>**Selecciona una foto de perfil**</option>
+                <option value="{{imgen[0]}}" selected="selected">Bart Simpson</option>
+                <option value="{{imgen[1]}}">Lisa Simpson</option>
+                <option value="{{imgen[2]}}">Homer Simpson</option>
+                <option value="{{imgen[3]}}">Maggie Simpson</option>
+                <option value="{{imgen[4]}}">Marge Simpson</option>
+                <option value="{{imgen[5]}}">Batman</option>
+                <option value="{{imgen[6]}}">Gandalf</option>
+                <option value="{{imgen[7]}}">Mickey</option>
+                <option value="{{imgen[8]}}">R2D2</option>
+                <option value="{{imgen[9]}}">Vader</option>
+            </select>
+
+            <div *ngIf="imgvalue">
+                <img src="{{imgvalue}}" alt="no carga" />
             </div>
         </div>
+    </div>-->
 
+        <div class="form-group row">
+        <label class="letra control-label col-md-12" for="Imagen">
+            <i class="glyphicon glyphicon-picture"></i>
+            Imagen de perfil
+            <span class="label-danger label" *ngIf="TraductorForm.hasError('required', 'imagen') && formDir.submitted">
+                Añade una imagen de perfil".
+            </span>
+        </label>
+        <div>
+            <input type="file" class="form-control tam imagenel" formControlName="imagen" accept="image/*"/>
+
+            <!--<div *ngIf="imgvalue">
+                <img src="{{imgvalue}}" alt="no carga" />
+            </div>-->
+        </div>
+    </div>
         <!--BOTONES SIGUIENTE/ATRAS-->
         <div class="form-group botones">
             <button type="submit" class="btn btn-default">Siguiente</button>

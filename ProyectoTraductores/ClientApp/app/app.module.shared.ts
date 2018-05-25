@@ -34,7 +34,8 @@ import { createServicio } from './components/addServicio/addServicio.component';
 import { CerrarsesionComponent } from './components/cerrarsesion/cerrarsesion.component';
 import { AddIdiomaAdicional } from './components/addidiomaadicional/addidiomaadicional.component';
 import { AddServicioAdicional } from './components/addservicioadicional/addservicioadicional.component';
-import { ErrorComponent } from './components/error/error.component'
+import { ErrorComponent } from './components/error/error.component';
+import { AddPeticionComponent } from './components/addPeticion/addPeticion.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { ErrorComponent } from './components/error/error.component'
         CerrarsesionComponent,
         AddIdiomaAdicional,
         AddServicioAdicional,
-        ErrorComponent
+        ErrorComponent,
+        AddPeticionComponent
     ],
     imports: [
         CommonModule,
@@ -63,9 +65,9 @@ import { ErrorComponent } from './components/error/error.component'
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot([
-        /*
-        RUTAS
-        */
+            /*
+            RUTAS
+            */
             { path: '', redirectTo: 'index', pathMatch: 'full' },
             //{ path: 'home', component: HomeComponent },
             { path: 'index', component: IndexComponent },
@@ -84,6 +86,7 @@ import { ErrorComponent } from './components/error/error.component'
             { path: 'cerrarsesion', component: CerrarsesionComponent },
             { path: 'add-Idioma-Adicional', component: AddIdiomaAdicional },
             { path: 'add-Servicio-Adicional', component: AddServicioAdicional },
+            { path: 'PeticionTraductor/:idTraductor/:idIdioma/:idServicios', component: AddPeticionComponent },
             { path: '**', component: ErrorComponent }
         ])
     ],

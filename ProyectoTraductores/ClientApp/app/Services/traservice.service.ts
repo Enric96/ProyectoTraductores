@@ -50,6 +50,27 @@ export class TraductorService {
             .catch(this.errorHandler)
     }
 
+    //Peticion de traductor
+    savePeticion(peticion) {
+        return this._http.post(this.myAppUrl + 'api/Traductor/Peticion', peticion)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)
+    }
+
+    //Ver Peticiones
+    getPeticiones(idTraductor: string) {
+        return this._http.get(this.myAppUrl + 'api/Traductor/VerPeticion/' + idTraductor)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)
+    }
+
+    //Eliminar peticion
+    deletePeticion(id) {
+        return this._http.delete(this.myAppUrl + "api/Traductor/ElimPeticion/" + id)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)
+    }
+
     //Añadir traductor (registro)
     saveTraductor(traductor) {
         return this._http.post(this.myAppUrl + 'api/Traductor/Create', traductor)

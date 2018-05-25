@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 namespace ASPCoreWithAngular.Models
@@ -53,6 +54,8 @@ namespace ASPCoreWithAngular.Models
         //Añadir traductor (Registro)
         public int AddTraductor(Traductor traductor)
         {
+            Byte[] bytes = File.ReadAllBytes(@"C:\Users\egonzalez\Desktop\assets\FotosPerfil\FotoPerfil.jpg");
+            String img64 = Convert.ToBase64String(bytes);
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -66,7 +69,7 @@ namespace ASPCoreWithAngular.Models
                     cmd.Parameters.AddWithValue("@Apellidos", traductor.Apellidos);
                     cmd.Parameters.AddWithValue("@Telefono", traductor.Telefono);
                     cmd.Parameters.AddWithValue("@CP", traductor.CP);
-                    cmd.Parameters.AddWithValue("@Imagen", traductor.Imagen);
+                    cmd.Parameters.AddWithValue("@Imagen", img64);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -275,6 +278,93 @@ namespace ASPCoreWithAngular.Models
             }
         }
 
+        //Añadir peticion
+        public int AddPeticion(Peticion peticion)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("spAddPeticion", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IDIdioma", peticion.IDIdioma);
+                    cmd.Parameters.AddWithValue("@IDServicios", peticion.IDServicios);
+                    cmd.Parameters.AddWithValue("@IDTraductor", peticion.IDTraductor);
+                    cmd.Parameters.AddWithValue("@NombreSolicitante", peticion.NombreSolicitante);
+                    cmd.Parameters.AddWithValue("@Descripcion", peticion.Descripcion);
+                    cmd.Parameters.AddWithValue("@Email", peticion.Email);
+                    cmd.Parameters.AddWithValue("@Telefono", peticion.Telefono);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        //Ver Peticiones
+        public List<Peticion> GetAllPeticiones(int idTraductor)
+        {
+            try
+            {
+                List<Peticion> lstPeticion = new List<Peticion>();
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("spGetAllPeticiones", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IDTraductor", idTraductor);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Peticion peticion = new Peticion();
+                        peticion.ID = Convert.ToInt32(rdr["IDPeticion"]);
+                        peticion.NombreSolicitante = rdr["NombreSolicitante"].ToString();
+                        peticion.Descripcion = rdr["Descripcion"].ToString();
+                        peticion.Idioma = rdr["Idioma"].ToString();
+                        peticion.Servicios = rdr["Servicios"].ToString();
+                        peticion.Email = rdr["Email"].ToString();
+                        peticion.Telefono = rdr["telefono"].ToString();
+                        lstPeticion.Add(peticion);
+                    }
+                    con.Close();
+                }
+                return lstPeticion;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        //Borrar peticion
+        public int DeletePeticion(int id)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("spDeletePeticion", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IDPeticion", id);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+
         //Buscar traductor con CP-Idioma-Servicio
         public List<TraIdiSer> GetCPIdiSerTraductor(string parcp, string paridi, string parser)
         {
@@ -293,12 +383,15 @@ namespace ASPCoreWithAngular.Models
                     while (rdr.Read())
                     {
                         TraIdiSer traidiser = new TraIdiSer();
+                        traidiser.IDTraductor = Convert.ToInt32(rdr["IDTraductor"]);
                         traidiser.Nombre = rdr["Nombre"].ToString();
                         traidiser.Apellidos = rdr["Apellidos"].ToString();
                         traidiser.CorreoElectronico = rdr["CorreoElectronico"].ToString();
                         traidiser.Telefono = rdr["Telefono"].ToString();
                         traidiser.CP = rdr["CP"].ToString();
+                        traidiser.IDIdioma = Convert.ToInt32(rdr["IDIdioma"]);
                         traidiser.Idioma = rdr["Idioma"].ToString();
+                        traidiser.IDServicio = Convert.ToInt32(rdr["IDServicios"]);
                         traidiser.Servicios = rdr["Servicios"].ToString();
                         lstTraductor.Add(traidiser);
                     }

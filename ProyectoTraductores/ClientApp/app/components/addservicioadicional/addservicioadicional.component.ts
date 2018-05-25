@@ -21,20 +21,24 @@ export class AddServicioAdicional {
         private _TraductorService: TraductorService, private _ServicioService: ServicioService,
         private _IdiomaService: IdiomaService, private _router: Router) {
         this.getServicios();
-        this.getaServicio();
-        setInterval(() => { this.deshabilitarchkbx(); }, 0);
     }
 
     //Ver Servicios
     getServicios() {
         this._ServicioService.getServicios().subscribe(
-            data => this.serList = data
+            data => {
+                this.serList = data;
+                this.getaServicio();
+            }
         )
     }
 
     getaServicio() {
         this._TraductorService.getServiciosHabladosID(id).subscribe(
-            data => this.servList = data
+            data => {
+                this.servList = data;
+                this.deshabilitarchkbx();
+            }
         )
     }
 

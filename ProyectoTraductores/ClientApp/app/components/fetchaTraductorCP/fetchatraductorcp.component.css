@@ -2,6 +2,8 @@
 .nocp{
     color: red;
     border: solid 2px red;
+    text-align: center;
+    top:40vh;
 }
 
 hr{
@@ -17,4 +19,9 @@ hr{
 a:hover{
     text-decoration:none;
     color:blue;
+}
+
+.imgcarga{
+    height:40px;
+    width:40px;
 }

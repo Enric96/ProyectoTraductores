@@ -18,6 +18,7 @@ export class FetchaTraductorComponent {
     public traList: TraductorData[];
     public serList: ServicioData[];
     public idiList: IdiomaData[];
+    public petList: PeticionData[];
     constructor(public http: Http, private _router: Router, private _TraductorService: TraductorService) {
         this.getaTraductor();
         this.getaServicios();
@@ -43,15 +44,24 @@ export class FetchaTraductorComponent {
     //Obtener id del traductor a partir del usuario
     getTraductorID() {
         this._TraductorService.getTraductorId(userlogin).subscribe(
-            data => id = data
+            data => {
+                id = data;
+                this.getPeticiones(id);
+            }
         )
-        //id = this.id;
+       
     }
 
     //Ver los idiomas que conoce
     getaIdiomas() {
         this._TraductorService.getIdiomasHabladosUsuario(userlogin, passlogin).subscribe(
             data => this.idiList = data
+        )
+    }
+
+    getPeticiones(id) {
+        this._TraductorService.getPeticiones(id).subscribe(
+            data => this.petList = data
         )
     }
 
@@ -74,11 +84,22 @@ export class FetchaTraductorComponent {
             });
         }
     }
-    //cerrses() {
-    //    this._TraductorService.getaTraductorByUsuario(userlogin1, passlogin1).subscribe(
-    //        data => this.traList = data
-    //    )
-    //}
+
+    detalles(nombreSolicitante, descripcion, idioma, servicios, email, telefono) {
+        alert(nombreSolicitante + " quiere: " + descripcion 
++" Para el idioma: " + idioma +" y el servicio: " + servicios 
++" Email: " + email 
++" Telefono: " +telefono);
+    }
+
+    borrar(idp, nombre) {
+        var ansp = confirm("¿Estás seguro que quieres eliminar la peticion de " + nombre + "?")
+        if (ansp) {
+            this._TraductorService.deletePeticion(idp).subscribe((data) => {
+                this.getPeticiones(id);
+            });
+        }
+    }
 }
 export var id;
 interface IdiomaData {
@@ -99,4 +120,13 @@ interface TraductorData {
     telefono: string;
     cp: string;
     imagen: string;
+}
+interface PeticionData {
+    id: string;
+    nombreSolicitante: string;
+    descripcion: string;
+    idioma: string;
+    servicios: string;
+    email: string;
+    telefono: string;
 }

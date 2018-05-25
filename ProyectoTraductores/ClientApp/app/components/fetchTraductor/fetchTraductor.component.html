@@ -1,7 +1,7 @@
 ﻿<h1>Traductores</h1>
 <p>Estos son todos los traductores registrados.</p>
 <p *ngIf="!traList">
-    <em>Cargando </em><img src="../carga.gif" alt="Cargando" style="height:40px; width:40px">
+    <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
     <!--TABLA-->
     <table class='table col-md-6' *ngIf="traList">
         <thead>
@@ -29,7 +29,7 @@
                 <td>{{ tra.apellidos }}</td>
                 <td>{{ tra.telefono }}</td>
                 <td>{{ tra.cp }}</td>
-                <td><img src="{{ tra.imagen }}"/></td>
+                <td><img src="data:image/jpeg;base64,{{ tra.imagen }}"/></td>
                 <td>
                     <!--LINKS EDITAR/BORRAR-->
                     <a [routerLink]="['/Traductor/edit/', tra.id]"><i class="glyphicon glyphicon-edit"></i> Editar</a> |

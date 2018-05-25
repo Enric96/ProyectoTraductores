@@ -2,16 +2,21 @@
 .notr {
     color: red;
     border: solid 2px red;
+    top:40vh;
+    text-align:center;
 }
+
 hr {
     border-top: 1px solid;
     margin: 15px 0 20px 0;
     color:silver;
     width: 100%
 }
+
 .verhr {
     color: white;
 }
+
 a:hover{
     text-decoration: none;
     color:blue;
@@ -31,10 +36,34 @@ a:hover{
 }
 
 .imagen {
-   border: solid 1px black;
+   border: solid 2px black;
    margin: 10px;
+   width:50%;
+   height:50%;
+}
+
+.tdimg{
+    max-width:500px;
 }
 
 .mrgbottom{
     margin-bottom:60px;
+}
+
+.imgcarga {
+    height:40px;
+    width:40px;
+}
+
+.tabla {
+    margin-bottom: 100px;
+}
+td {
+    max-width:100px; 
+    overflow:hidden;
+
+}
+
+.ss {
+    word-break: break-word;
 }
