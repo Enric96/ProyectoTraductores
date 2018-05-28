@@ -54,8 +54,8 @@ namespace ASPCoreWithAngular.Models
         //Añadir traductor (Registro)
         public int AddTraductor(Traductor traductor)
         {
-            Byte[] bytes = File.ReadAllBytes(@"C:\Users\egonzalez\Desktop\assets\FotosPerfil\FotoPerfil.jpg");
-            String img64 = Convert.ToBase64String(bytes);
+            //Byte[] bytes = File.ReadAllBytes(@""+traductor.Imagen);
+            //String img64 = Convert.ToBase64String(bytes);
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -69,7 +69,7 @@ namespace ASPCoreWithAngular.Models
                     cmd.Parameters.AddWithValue("@Apellidos", traductor.Apellidos);
                     cmd.Parameters.AddWithValue("@Telefono", traductor.Telefono);
                     cmd.Parameters.AddWithValue("@CP", traductor.CP);
-                    cmd.Parameters.AddWithValue("@Imagen", img64);
+                    cmd.Parameters.AddWithValue("@Imagen", traductor.Imagen);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -85,8 +85,8 @@ namespace ASPCoreWithAngular.Models
         //Actualizar traductor (Editar perfil)
         public int UpdateTraductor(Traductor traductor)
         {
-            Byte[] bytes = File.ReadAllBytes(@"C:\Users\egonzalez\Desktop\assets\FotosPerfil\FotoPerfil.jpg");
-            String img64 = Convert.ToBase64String(bytes);
+            //Byte[] bytes = File.ReadAllBytes(@"C:\Users\egonzalez\Desktop\assets\FotosPerfil\FotoPerfil.jpg");
+            //String img64 = Convert.ToBase64String(bytes);
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -101,7 +101,7 @@ namespace ASPCoreWithAngular.Models
                     cmd.Parameters.AddWithValue("@Apellidos", traductor.Apellidos);
                     cmd.Parameters.AddWithValue("@Telefono", traductor.Telefono);
                     cmd.Parameters.AddWithValue("@CP", traductor.CP);
-                    cmd.Parameters.AddWithValue("@Imagen", img64);
+                    cmd.Parameters.AddWithValue("@Imagen", traductor.Imagen);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
