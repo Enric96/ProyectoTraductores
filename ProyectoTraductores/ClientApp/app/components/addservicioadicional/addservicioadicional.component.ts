@@ -68,10 +68,10 @@ export class AddServicioAdicional {
             var ser = servicio[s];
             if (ser.checked) {
                 this._TraductorService.saveTraductorServicios(ser.value, id).subscribe((data) => {
+                    this._router.navigate(['/fetcha-Traductor']);
                 })
             }
         }
-        this._router.navigate(['/fetcha-Traductor']);
     }
 
     //Boton volver al perfil

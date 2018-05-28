@@ -100,6 +100,13 @@
 
     <!--PETICIONES-->
     <h2>Peticiones de contratacion</h2>
+    <popup class="popup">
+        Descripcion: {{descripcion}}<br />
+        Idioma: {{idioma}}<br />
+        Servicio: {{servicios}}<br />
+        Email: {{email}}<br />
+        Telefono: {{telefono}}
+    </popup>
     <div *ngIf="petList != ''">
         <p *ngIf="!petList">
             <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga" />

@@ -67,10 +67,10 @@ export class AddIdiomaAdicional {
             var idi = idioma[i];
             if (idi.checked) {
                 this._TraductorService.saveTraductorIdioma(idi.value, id).subscribe((data) => {
+                    this._router.navigate(['/fetcha-Traductor']);
                 })
             }
         }
-        this._router.navigate(['/fetcha-Traductor']);
     }
 
     //Boton atras

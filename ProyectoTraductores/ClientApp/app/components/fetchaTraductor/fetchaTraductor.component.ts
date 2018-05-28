@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
 import { logregComponent } from '../logreg/logreg.component';
 import { userlogin, passlogin } from '../logreg/logreg.component';
 import { RouterLink } from '@angular/router/src/directives/router_link';
+import { Popup } from 'ng2-opd-popup';
 //import { userlogin1, passlogin1 } from '../cerrarsesion/cerrarsesion.component';
 @Component({
     selector: 'fetchaTraductor',
@@ -19,7 +20,12 @@ export class FetchaTraductorComponent {
     public serList: ServicioData[];
     public idiList: IdiomaData[];
     public petList: PeticionData[];
-    constructor(public http: Http, private _router: Router, private _TraductorService: TraductorService) {
+    public descripcion: string;
+    public idioma: string;
+    public servicios: string;
+    public email: string;
+    public telefono: string;
+    constructor(public http: Http, private _router: Router, private _TraductorService: TraductorService, private _popup: Popup) {
         this.getaTraductor();
         this.getaServicios();
         this.getaIdiomas();
@@ -86,10 +92,20 @@ export class FetchaTraductorComponent {
     }
 
     detalles(nombreSolicitante, descripcion, idioma, servicios, email, telefono) {
-        alert(nombreSolicitante + " quiere: " + descripcion 
-+"\nPara el idioma: " + idioma +" y el servicio: " + servicios 
-+"\nEmail: " + email 
-+"\nTelefono: " +telefono);
+        this.descripcion = descripcion;
+        this.idioma = idioma;
+        this.servicios = servicios;
+        this.email = email;
+        this.telefono = telefono;
+        this._popup.options = {
+            header: nombreSolicitante, //Encabezado del Popup
+            color: "firebrick", //Color popup
+            animationDuration: 1, //Duracion de la animacion (1 segundo)
+            cancleBtnContent: "Cerrar", //Texto del boton 
+            confirmBtnClass: "hide", //Clase boton aceptar (no aparece)
+            animation: "bounceIn" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown'
+        }
+        this._popup.show();
     }
 
     borrar(idp, nombre) {

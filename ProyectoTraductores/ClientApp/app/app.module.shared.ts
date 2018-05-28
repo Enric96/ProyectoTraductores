@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { PopupModule } from 'ng2-opd-popup'
 /*
 COMPONENTS
 */
@@ -36,6 +37,7 @@ import { AddIdiomaAdicional } from './components/addidiomaadicional/addidiomaadi
 import { AddServicioAdicional } from './components/addservicioadicional/addservicioadicional.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AddPeticionComponent } from './components/addPeticion/addPeticion.component';
+//import { PopupComponent } from 'ng2-opd-popup';
 
 @NgModule({
     declarations: [
@@ -56,6 +58,7 @@ import { AddPeticionComponent } from './components/addPeticion/addPeticion.compo
         CerrarsesionComponent,
         AddIdiomaAdicional,
         AddServicioAdicional,
+        //PopupComponent,
         ErrorComponent,
         AddPeticionComponent
     ],
@@ -64,6 +67,7 @@ import { AddPeticionComponent } from './components/addPeticion/addPeticion.compo
         HttpModule,
         FormsModule,
         ReactiveFormsModule,
+        PopupModule.forRoot(),
         RouterModule.forRoot([
             /*
             RUTAS
