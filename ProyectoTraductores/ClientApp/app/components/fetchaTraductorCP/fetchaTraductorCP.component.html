@@ -48,7 +48,7 @@
                 <img class="imagen img-circle pull-right" src="data:image/jpeg;base64,{{tracp.imagen}}" />
                 <h1> <strong>{{ tracp.nombre }} {{ tracp.apellidos }}</strong></h1>
                 <hr />
-                <h2>Email: <strong>{{ tracp.correoElectronico }}</strong></h2>
+                <h2>Email: <a href="mailto:{{tracp.correoElectronico}}?Subject=Petición de traducción, para el idioma {{tracpList[0].idioma}} y el servicio {{tracpList[0].servicios}}"><strong>{{ tracp.correoElectronico }}</strong></a></h2>
                 <h2>Telefono: <strong>{{ tracp.telefono }}</strong></h2>
                 <div class="baja">
                     <h2><button class="botones" [routerLink]="" (click)="enviar(tracp.idTraductor, tracp.idIdioma, tracp.idServicio)"><i class="glyphicon glyphicon-briefcase"></i> contratar</button></h2>

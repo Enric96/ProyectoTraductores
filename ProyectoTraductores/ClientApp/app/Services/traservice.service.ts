@@ -92,6 +92,20 @@ export class TraductorService {
             .catch(this.errorHandler)
     }
 
+    ////Añadir idioma a un traductor
+    //saveTraductorIdioma(idioma) {
+    //    return this._http.post(this.myAppUrl + 'api/Traductor/Createidioma', idioma)
+    //        .map((response: Response) => response.json())
+    //        .catch(this.errorHandler)
+    //}
+
+    ////Añadir servicio a un traductor
+    //saveTraductorServicios(servicio) {
+    //    return this._http.post(this.myAppUrl + 'api/Traductor/Createservicio', servicio)
+    //        .map((response: Response) => response.json())
+    //        .catch(this.errorHandler)
+    //}
+
     //Ver los idiomas de un traductor (usuario)
     getIdiomasHabladosUsuario(usuario: string, contrasena: string) {
         return this._http.get(this.myAppUrl + 'api/Traductor/GetIdiomas/' + usuario + "," + contrasena)

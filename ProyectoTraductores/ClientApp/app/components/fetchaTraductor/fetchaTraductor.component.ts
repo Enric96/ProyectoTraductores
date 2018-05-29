@@ -101,8 +101,9 @@ export class FetchaTraductorComponent {
             header: nombreSolicitante, //Encabezado del Popup
             color: "#AFB4FF", //Color popup
             animationDuration: 1, //Duracion de la animacion (1 segundo)
-            cancleBtnContent: "Cerrar", //Texto del boton 
+            cancleBtnContent: "", //Texto del boton 
             confirmBtnClass: "hide", //Clase boton aceptar (no aparece)
+            cancleBtnClass: "glyphicon glyphicon-remove btn-danger btn", //Clase boton cerrar
             animation: "bounceIn" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown'
         }
         this._popup.show();

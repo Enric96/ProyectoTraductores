@@ -89,6 +89,21 @@ namespace ProyectoTraductores.Controllers
             return objTraductor.AddTraductoServicio(idservicios, idtraductor);
         }
 
+        //[HttpPost]
+        //[Route("api/Traductor/Createidioma")]
+        //public int Createidioma([FromBody] Idiomatraductor idioma)
+        //{
+        //    return objTraductor.AddTraductorIdioma(idioma.IDIdioma, idioma.IDTraductor);
+        //}
+
+        ////Añadir servicio a un traductor
+        //[HttpPost]
+        //[Route("api/Traductor/Createservicio/{idservicios},{idtraductor}")]
+        //public int Createservicio([FromBody] Serviciostraductor servicio)
+        //{
+        //    return objTraductor.AddTraductoServicio(servicio.IDServicios, servicio.IDTraductor);
+        //}
+
         //Ver los idiomas de un traductor (usuario)
         [HttpGet]
         [Route("api/Traductor/GetIdiomas/{usuario},{contrasena}")]
@@ -202,3 +217,15 @@ namespace ProyectoTraductores.Controllers
         }
     }
 }
+
+//public class Serviciostraductor
+//{
+//    public int IDServicios { get; set; }
+//    public int IDTraductor { get; set; }
+//}
+
+//public class Idiomatraductor
+//{
+//    public int IDIdioma { get; set; }
+//    public int IDTraductor { get; set; }
+//}

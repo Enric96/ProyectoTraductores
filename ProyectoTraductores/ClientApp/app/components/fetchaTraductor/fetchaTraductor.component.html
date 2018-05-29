@@ -129,7 +129,7 @@
                     <td>{{pet.nombreSolicitante}}</td>
                     <td>{{pet.idioma}}</td>
                     <td>{{pet.servicios}}</td>
-                    <td>{{pet.email}}</td>
+                    <td><a href="mailto:{{pet.email}}?Subject=Petición de traducción hecha a {{traList[0].nombre}} {{traList[0].apellidos}}">{{pet.email}}</a></td>
                     <td>{{pet.telefono}}</td>
                     <td>
                         <a [routerLink]="" (click)="detalles(pet.nombreSolicitante, pet.descripcion, pet.idioma, pet.servicios, pet.email, pet.telefono)">Ver detalles</a>|
