@@ -45,11 +45,14 @@
         </div>
         <div *ngFor="let tracp of tracpList" id="divCol" class="col-md-6">
             <div class="fitxa bg-success">
-                <!--<img class="imagen img-circle" src="data:image/jpeg;base64,{{tracp.imagen}}" />-->
-                <h1>Nombre: {{ tracp.nombre }} {{ tracp.apellidos }}</h1>
-                <h1>Email: {{ tracp.correoElectronico }}</h1>
-                <h1>Telefono: {{ tracp.telefono }}</h1>
-                <h1><a [routerLink]="" (click)="enviar(tracp.idTraductor, tracp.idIdioma, tracp.idServicio)"><i class="glyphicon glyphicon-briefcase"></i> contratar</a></h1>
+                <img class="imagen img-circle pull-right" src="data:image/jpeg;base64,{{tracp.imagen}}" />
+                <h1> <strong>{{ tracp.nombre }} {{ tracp.apellidos }}</strong></h1>
+                <hr />
+                <h2>Email: <strong>{{ tracp.correoElectronico }}</strong></h2>
+                <h2>Telefono: <strong>{{ tracp.telefono }}</strong></h2>
+                <div class="baja">
+                    <h2><button class="botones" [routerLink]="" (click)="enviar(tracp.idTraductor, tracp.idIdioma, tracp.idServicio)"><i class="glyphicon glyphicon-briefcase"></i> contratar</button></h2>
+                </div>
             </div>
         </div>
     </div>

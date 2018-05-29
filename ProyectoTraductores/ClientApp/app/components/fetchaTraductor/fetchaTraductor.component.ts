@@ -99,7 +99,7 @@ export class FetchaTraductorComponent {
         this.telefono = telefono;
         this._popup.options = {
             header: nombreSolicitante, //Encabezado del Popup
-            color: "firebrick", //Color popup
+            color: "#AFB4FF", //Color popup
             animationDuration: 1, //Duracion de la animacion (1 segundo)
             cancleBtnContent: "Cerrar", //Texto del boton 
             confirmBtnClass: "hide", //Clase boton aceptar (no aparece)

@@ -36,13 +36,16 @@
     <div *ngIf="traList">
         <div *ngFor="let tra of traList" class="col-md-6">
             <div class="fitxa bg-success">
-                <img class="imagen img-circle" src="data:image/jpeg;base64,{{tra.imagen}}"/>
-                <h1>Usuario: {{tra.usuario}}</h1>
-                <h1>Nombre: {{tra.nombre}} {{tra.apellidos}}</h1>
-                <h1>Email: {{tra.correoElectronico}}</h1>
-                <h1>Telefono: {{tra.telefono}}</h1>
-                <h1>CP: {{tra.cp}}</h1>
-                <h1> <a [routerLink]="['/Traductor/edit/', tra.id]"><i class="glyphicon glyphicon-edit"></i> Editar</a></h1>
+                <img class="imagen img-circle pull-right" src="data:image/jpeg;base64,{{tra.imagen}}" />
+                <h1><strong>{{tra.nombre}} {{tra.apellidos}}</strong></h1>
+                <hr />
+                <h2>Usuario: <strong>{{tra.usuario}}</strong></h2>
+                <h2>Email: <strong>{{tra.correoElectronico}}</strong></h2>
+                <h2>Telefono: <strong>{{tra.telefono}}</strong></h2>
+                <h2>CP: <strong>{{tra.cp}}</strong></h2>
+                <div class="baja">
+                    <h2><button class="botones" [routerLink]="['/Traductor/edit/', tra.id]"><i class="glyphicon glyphicon-edit"></i> Editar</button></h2>
+                </div>
             </div>
         </div>
     </div>
@@ -101,11 +104,11 @@
     <!--PETICIONES-->
     <h2>Peticiones de contratacion</h2>
     <popup class="popup">
-        Descripcion: {{descripcion}}<br />
-        Idioma: {{idioma}}<br />
-        Servicio: {{servicios}}<br />
-        Email: {{email}}<br />
-        Telefono: {{telefono}}
+        <h3>Descripcion: <strong>{{descripcion}}</strong></h3><br />
+        <h3>Idioma: <strong>{{idioma}}</strong></h3><br />
+        <h3>Servicio: <strong>{{servicios}}</strong></h3><br />
+        <h3>Email: <strong>{{email}}</strong></h3><br />
+        <h3>Telefono: <strong>{{telefono}}</strong></h3>
     </popup>
     <div *ngIf="petList != ''">
         <p *ngIf="!petList">

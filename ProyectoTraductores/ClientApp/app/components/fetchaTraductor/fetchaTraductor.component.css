@@ -65,16 +65,43 @@ td {
 
 }
 
-.ss {
-    word-break: break-word;
-}
-
 .fitxa {
     border: 1px solid black;
     margin-bottom: 10px;
     text-align: center;
+    word-break: break-word; 
+    font-family: Garamond;
 }
 
 .popup {
     word-break: break-word;
+    font-family: Garamond;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 10vh !important;
+}
+
+.botones {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color:white;
+    background-color: black;
+    text-align: center;
+    width: 100%;
+    height:50px;
+}
+
+.botones:hover {
+    background-color: #5f5f5f;
+}
+
+.fitxa h1 {
+    line-height:2;
+}
+
+.baja {
+    height: 50px;
 }
