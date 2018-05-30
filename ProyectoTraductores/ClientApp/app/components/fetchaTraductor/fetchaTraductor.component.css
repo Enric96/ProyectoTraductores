@@ -76,10 +76,11 @@ td {
 .popup {
     word-break: break-word;
     font-family: Garamond;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 10vh !important;
+    position: fixed;
+    right: -12%;
+    top: 13%;
+    width: 100%;
+    z-index: 12;
 }
 
 .botones {
@@ -104,8 +105,4 @@ td {
 
 .baja {
     height: 50px;
-}
-
-.btn-danger {
-    color: green;
 }

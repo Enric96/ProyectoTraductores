@@ -104,7 +104,7 @@ export class FetchaTraductorComponent {
             animationDuration: 1, //Duracion de la animacion (1 segundo)
             cancleBtnContent: "", //Texto del boton 
             confirmBtnClass: "hide", //Clase boton aceptar (no aparece)
-            cancleBtnClass: "glyphicon glyphicon-remove btn-danger btn", //Clase boton cerrar
+            cancleBtnClass: "glyphicon glyphicon-remove btn-danger btn botonpopup", //Clase boton cerrar
             animation: "bounceIn" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown'
         }
         this._popup.show();
