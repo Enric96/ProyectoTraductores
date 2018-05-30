@@ -21,6 +21,8 @@ export class AddTraIdiSerComponent {
     IdiserForm: FormGroup;
     id: number;
     errorMessage: any;
+    jsonidioma: any;
+    jsonservicio: any;
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _TraductorService: TraductorService, private _ServicioService: ServicioService,
         private _IdiomaService: IdiomaService, private _router: Router) {
@@ -74,7 +76,11 @@ export class AddTraIdiSerComponent {
             for (var i = 0; i < idioma.length; i++) {
                 var idi = idioma[i];
                 if (idi.checked) {
-                    this._TraductorService.saveTraductorIdioma(idi.value, this.id).subscribe((data) => {
+                    this.jsonidioma = {
+                        "IDIdioma": +idi.value,
+                        "IDTraductor": +this.id
+                    }
+                    this._TraductorService.saveTraductorIdioma(this.jsonidioma).subscribe((data) => {
                     })
                 }
             }
@@ -83,7 +89,11 @@ export class AddTraIdiSerComponent {
             for (var s = 0; s < servicio.length; s++) {
                 var ser = servicio[s];
                 if (ser.checked) {
-                    this._TraductorService.saveTraductorServicios(ser.value, this.id).subscribe((data) => {
+                    this.jsonservicio = {
+                        "IDServicios": +ser.value,
+                        "IDTraductor": this.id
+                    }
+                    this._TraductorService.saveTraductorServicios(this.jsonservicio).subscribe((data) => {
                     })
                 }
             }

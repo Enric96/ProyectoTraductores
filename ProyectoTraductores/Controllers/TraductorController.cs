@@ -73,36 +73,36 @@ namespace ProyectoTraductores.Controllers
             return objTraductor.AddTraductor(traductor);
         }
 
-        //Añadir idioma a un traductor
-        [HttpGet]
-        [Route("api/Traductor/Createidioma/{ididioma},{idtraductor}")]
-        public int Createidioma(int ididioma, int idtraductor)
+        ////Añadir idioma a un traductor
+        //[HttpGet]
+        //[Route("api/Traductor/Createidioma/{ididioma},{idtraductor}")]
+        //public int Createidioma(int ididioma, int idtraductor)
+        //{
+        //    return objTraductor.AddTraductorIdioma(ididioma, idtraductor);
+        //}
+
+        //Añadir servicio a un traductor
+        //[HttpGet]
+        //[Route("api/Traductor/Createservicio/{idservicios},{idtraductor}")]
+        //public int Createservicio(int idservicios, int idtraductor)
+        //{
+        //    return objTraductor.AddTraductoServicio(idservicios, idtraductor);
+        //}
+
+        //[HttpPost]
+        [Route("api/Traductor/Createidioma")]
+        public int Createidioma([FromBody] Idiomatraductor idioma)
         {
-            return objTraductor.AddTraductorIdioma(ididioma, idtraductor);
+            return objTraductor.AddTraductorIdioma(idioma.IDIdioma, idioma.IDTraductor);
         }
 
         //Añadir servicio a un traductor
-        [HttpGet]
-        [Route("api/Traductor/Createservicio/{idservicios},{idtraductor}")]
-        public int Createservicio(int idservicios, int idtraductor)
+        [HttpPost]
+        [Route("api/Traductor/Createservicio")]
+        public int Createservicio([FromBody] Serviciostraductor servicio)
         {
-            return objTraductor.AddTraductoServicio(idservicios, idtraductor);
+            return objTraductor.AddTraductoServicio(servicio.IDServicios, servicio.IDTraductor);
         }
-
-        //[HttpPost]
-        //[Route("api/Traductor/Createidioma")]
-        //public int Createidioma([FromBody] Idiomatraductor idioma)
-        //{
-        //    return objTraductor.AddTraductorIdioma(idioma.IDIdioma, idioma.IDTraductor);
-        //}
-
-        ////Añadir servicio a un traductor
-        //[HttpPost]
-        //[Route("api/Traductor/Createservicio/{idservicios},{idtraductor}")]
-        //public int Createservicio([FromBody] Serviciostraductor servicio)
-        //{
-        //    return objTraductor.AddTraductoServicio(servicio.IDServicios, servicio.IDTraductor);
-        //}
 
         //Ver los idiomas de un traductor (usuario)
         [HttpGet]
@@ -218,14 +218,14 @@ namespace ProyectoTraductores.Controllers
     }
 }
 
-//public class Serviciostraductor
-//{
-//    public int IDServicios { get; set; }
-//    public int IDTraductor { get; set; }
-//}
+public class Serviciostraductor
+{
+    public int IDServicios { get; set; }
+    public int IDTraductor { get; set; }
+}
 
-//public class Idiomatraductor
-//{
-//    public int IDIdioma { get; set; }
-//    public int IDTraductor { get; set; }
-//}
+public class Idiomatraductor
+{
+    public int IDIdioma { get; set; }
+    public int IDTraductor { get; set; }
+}

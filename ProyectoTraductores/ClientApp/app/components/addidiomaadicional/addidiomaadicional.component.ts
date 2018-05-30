@@ -20,6 +20,7 @@ export class AddIdiomaAdicional {
     public idioList: IdiomaconData[];
     public idiList: IdiomaData[];
     errorMessage: any;
+    jsonidioma: any;
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _TraductorService: TraductorService,
         private _IdiomaService: IdiomaService, private _router: Router) {
@@ -66,7 +67,11 @@ export class AddIdiomaAdicional {
         for (var i = 0; i < idioma.length; i++) {
             var idi = idioma[i];
             if (idi.checked) {
-                this._TraductorService.saveTraductorIdioma(idi.value, id).subscribe((data) => {
+                this.jsonidioma = {
+                    "IDIdioma": +idi.value,
+                    "IDTraductor": +id
+                }
+                this._TraductorService.saveTraductorIdioma(this.jsonidioma).subscribe((data) => {
                     this._router.navigate(['/fetcha-Traductor']);
                 })
             }

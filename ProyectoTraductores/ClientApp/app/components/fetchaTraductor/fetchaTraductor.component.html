@@ -1,13 +1,13 @@
 ﻿<div *ngIf="traList!=''">
-        <h1>Perfil</h1>
-        <p>Estos son tus datos, idiomas y servicios.</p>
+    <h1>Perfil</h1>
+    <p>Estos son tus datos, idiomas y servicios.</p>
     <p *ngIf="!traList">
         <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga">
     </p>
     <!--TABLA TRADUCTOR-->
     <!--<table class='table col-md-12' *ngIf="traList">
         <thead>
-            
+
             <tr>
                 <th>Usuario</th>
                 <th>Email</th>
@@ -27,7 +27,7 @@
                 <td>{{ tra.telefono }}</td>
                 <td>{{ tra.cp }}</td>
                 <td>
-                   
+
                     <a [routerLink]="['/Traductor/edit/', tra.id]"><i class="glyphicon glyphicon-edit"></i> Editar</a>
                 </td>
             </tr>
@@ -101,50 +101,52 @@
     </div>
     <hr />
 
-    <!--PETICIONES-->
-    <h2>Peticiones de contratacion</h2>
-    <popup class="popup">
-        <h3>Descripcion: <strong>{{descripcion}}</strong></h3><br />
-        <h3>Idioma: <strong>{{idioma}}</strong></h3><br />
-        <h3>Servicio: <strong>{{servicios}}</strong></h3><br />
-        <h3>Email: <strong>{{email}}</strong></h3><br />
-        <h3>Telefono: <strong>{{telefono}}</strong></h3>
-    </popup>
-    <div *ngIf="petList != ''">
-        <p *ngIf="!petList">
-            <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga" />
-        </p>
-        <table class="table tabla col-md-12" *ngIf="serList">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Idioma</th>
-                    <th>Servicios</th>
-                    <th>Email</th>
-                    <th>Telefono</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let pet of petList">
-                    <td>{{pet.nombreSolicitante}}</td>
-                    <td>{{pet.idioma}}</td>
-                    <td>{{pet.servicios}}</td>
-                    <td><a href="mailto:{{pet.email}}?Subject=Petición de traducción hecha a {{traList[0].nombre}} {{traList[0].apellidos}}">{{pet.email}}</a></td>
-                    <td>{{pet.telefono}}</td>
-                    <td>
-                        <a [routerLink]="" (click)="detalles(pet.nombreSolicitante, pet.descripcion, pet.idioma, pet.servicios, pet.email, pet.telefono)">Ver detalles</a>|
-                        <a [routerLink]="" (click)="borrar(pet.id, pet.nombreSolicitante)"><i class="glyphicon glyphicon-trash"></i>Borrar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <br>
-    <h3 *ngIf="petList == ''">No tienes peticiones pendientes</h3>
-    <div class="footer">
-        <div class="footerdentro">
-            <h6>Si tiene algún problema con el perfil, o quiere darse de baja,</h6>
-            <h6>contacte con el administrador de la web (Admin@adminmail.es)</h6>
+    <div *ngIf="traList">
+        <!--PETICIONES-->
+        <h2>Peticiones de contratacion</h2>
+        <popup class="popup">
+            <h3>Descripcion: <strong>{{descripcion}}</strong></h3><br />
+            <h3>Idioma: <strong>{{idioma}}</strong></h3><br />
+            <h3>Servicio: <strong>{{servicios}}</strong></h3><br />
+            <h3>Email: <a href="mailto:{{email}}?Subject=Petición de traducción hecha a {{traList[0].nombre}} {{traList[0].apellidos}}"><strong>{{email}}</strong></a></h3><br />
+            <h3>Telefono: <strong>{{telefono}}</strong></h3>
+        </popup>
+        <div *ngIf="petList != ''">
+            <p *ngIf="!petList">
+                <em>Cargando </em><img src="../carga.gif" alt="Cargando" class="imgcarga" />
+            </p>
+            <table class="table tabla col-md-12" *ngIf="serList">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Idioma</th>
+                        <th>Servicios</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pet of petList">
+                        <td>{{pet.nombreSolicitante}}</td>
+                        <td>{{pet.idioma}}</td>
+                        <td>{{pet.servicios}}</td>
+                        <td><a href="mailto:{{pet.email}}?Subject=Petición de traducción hecha a {{traList[0].nombre}} {{traList[0].apellidos}}">{{pet.email}}</a></td>
+                        <td>{{pet.telefono}}</td>
+                        <td>
+                            <a [routerLink]="" (click)="detalles(pet.nombreSolicitante, pet.descripcion, pet.idioma, pet.servicios, pet.email, pet.telefono)">Ver detalles</a>|
+                            <a [routerLink]="" (click)="borrar(pet.id, pet.nombreSolicitante)"><i class="glyphicon glyphicon-trash"></i>Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <h3 *ngIf="petList == ''">No tienes peticiones pendientes</h3>
+        <div class="footer">
+            <div class="footerdentro">
+                <h6>Si tiene algún problema con el perfil, o quiere darse de baja,</h6>
+                <h6>contacte con el administrador de la web (Admin@adminmail.es)</h6>
+            </div>
         </div>
     </div>
 </div>

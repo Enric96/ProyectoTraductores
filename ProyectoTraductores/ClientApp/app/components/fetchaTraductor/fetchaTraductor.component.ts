@@ -100,6 +100,7 @@ export class FetchaTraductorComponent {
         this._popup.options = {
             header: nombreSolicitante, //Encabezado del Popup
             color: "#AFB4FF", //Color popup
+            widthProsentage: 50, //width popup
             animationDuration: 1, //Duracion de la animacion (1 segundo)
             cancleBtnContent: "", //Texto del boton 
             confirmBtnClass: "hide", //Clase boton aceptar (no aparece)

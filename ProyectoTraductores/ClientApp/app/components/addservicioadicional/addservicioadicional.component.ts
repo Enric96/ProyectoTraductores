@@ -17,6 +17,7 @@ export class AddServicioAdicional {
     public servList: ServicioconData[];
     public serList: ServicioData[];
     errorMessage: any;
+    jsonservicio: any;
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _TraductorService: TraductorService, private _ServicioService: ServicioService,
         private _IdiomaService: IdiomaService, private _router: Router) {
@@ -67,7 +68,11 @@ export class AddServicioAdicional {
         for (var s = 0; s < servicio.length; s++) {
             var ser = servicio[s];
             if (ser.checked) {
-                this._TraductorService.saveTraductorServicios(ser.value, id).subscribe((data) => {
+                this.jsonservicio = {
+                    "IDServicios": +ser.value,
+                    "IDTraductor": id
+                }
+                this._TraductorService.saveTraductorServicios(this.jsonservicio).subscribe((data) => {
                     this._router.navigate(['/fetcha-Traductor']);
                 })
             }
