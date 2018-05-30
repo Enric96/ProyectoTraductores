@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FetchTraductorComponent } from '../fetchTraductor/fetchTraductor.component';
 import { LogregService } from '../../services/logregservice.service';
 import { NavMenuComponent } from '../navmenu/navmenu.component';
+import { LowerCasePipe } from '@angular/common/src/pipes';
 
 @Component({
     selector: 'logreg',
@@ -42,7 +43,8 @@ export class logregComponent {
         }
 
         //Si login es Admin
-        if (this.LogregForm.value.usuario == "Administrador" && this.LogregForm.value.contrasena == "adminadmin123") {
+        
+        if (this.LogregForm.value.usuario.toLowerCase() == "administrador" && this.LogregForm.value.contrasena.toLowerCase() == "adminadmin123") {
             admin = "adminsi";
             usua = "ususi";
             this._router.navigate(['/fetcha-Traductor']);
