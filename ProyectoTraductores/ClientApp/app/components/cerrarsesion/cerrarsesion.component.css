@@ -8,6 +8,8 @@
     width: 75px;
     font-size: 35px;
     color: white;
+    border-radius: 50%;
+    border: none
 }
 
 .butno {
@@ -16,4 +18,6 @@
     width: 75px;
     font-size: 35px;
     color: white;
+    border-radius: 50%;
+    border: none;
 }
