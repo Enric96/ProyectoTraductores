@@ -7,6 +7,7 @@ import { logregComponent } from '../logreg/logreg.component';
 import { userlogin, passlogin } from '../logreg/logreg.component';
 import { RouterLink } from '@angular/router/src/directives/router_link';
 import { Popup } from 'ng2-opd-popup';
+import { NavMenuComponent } from '../navmenu/navmenu.component';
 //import { userlogin1, passlogin1 } from '../cerrarsesion/cerrarsesion.component';
 @Component({
     selector: 'fetchaTraductor',
@@ -35,8 +36,11 @@ export class FetchaTraductorComponent {
 
     //Ver los datos del traductor
     getaTraductor() {
-        this._TraductorService.getaTraductorByUsuario(userlogin, passlogin).subscribe(
-            data => this.traList = data
+        this._TraductorService.getaTraductorByUsuario(userlogin, passlogin).subscribe(data => {
+            this.traList = data
+            hayusu = this.traList.length;
+
+        }
         )
     }
 
@@ -120,6 +124,7 @@ export class FetchaTraductorComponent {
     }
 }
 export var id;
+export var hayusu;
 interface IdiomaData {
     idIdioma: number;
     idioma: string;

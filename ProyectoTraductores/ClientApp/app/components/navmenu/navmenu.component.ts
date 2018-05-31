@@ -1,6 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { usua, admin } from '../logreg/logreg.component';
 import { Router } from '@angular/router';
+import { hayusu } from '../fetchaTraductor/fetchaTraductor.component';
 @Component({
     selector: 'nav-menu',
     templateUrl: './navmenu.component.html',
@@ -15,9 +16,7 @@ export class NavMenuComponent {
 
     inices() {
         //Ver si esta logeadopara mostrar botones adicionales
-        if (usua == undefined) {
-            alert("No te has logeado");
-            this._router.navigate(['/logreg']);
+        if (usua == undefined || hayusu == 0) {
         }
         else {
             this.adm = admin;

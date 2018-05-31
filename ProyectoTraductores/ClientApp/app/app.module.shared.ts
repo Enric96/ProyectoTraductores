@@ -94,7 +94,7 @@ import { AddPeticionComponent } from './components/addPeticion/addPeticion.compo
             { path: '**', component: ErrorComponent }
         ])
     ],
-    providers: [TraductorService, CPService, IdiomaService, ServicioService, LogregService]
+    providers: [TraductorService, CPService, IdiomaService, ServicioService, LogregService, NavMenuComponent]
 })
 export class AppModuleShared {
 }
