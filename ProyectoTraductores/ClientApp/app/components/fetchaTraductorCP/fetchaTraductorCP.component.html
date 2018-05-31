@@ -45,7 +45,7 @@
         </div>
         <div *ngFor="let tracp of tracpList" id="divCol" class="col-md-6">
             <div class="fitxa bg-success">
-                <img class="imagen img-circle pull-right" src="data:image/jpeg;base64,{{tracp.imagen}}" />
+                <img class="imagen img-circle pull-right" src="{{tracp.imagen}}" />
                 <h1> <strong>{{ tracp.nombre }} {{ tracp.apellidos }}</strong></h1>
                 <hr />
                 <h2>Email: <a href="mailto:{{tracp.correoElectronico}}?Subject=Petición de traducción, para el idioma {{tracpList[0].idioma}} y el servicio {{tracpList[0].servicios}}"><strong>{{ tracp.correoElectronico }}</strong></a></h2>

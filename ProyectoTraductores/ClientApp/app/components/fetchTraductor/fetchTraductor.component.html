@@ -29,7 +29,7 @@
                 <td>{{ tra.apellidos }}</td>
                 <td>{{ tra.telefono }}</td>
                 <td>{{ tra.cp }}</td>
-                <td><img src="data:image/jpeg;base64,{{ tra.imagen }}"/></td>
+                <td><img src="{{ tra.imagen }}"/></td>
                 <td>
                     <!--LINKS EDITAR/BORRAR-->
                     <a [routerLink]="['/Traductor/edit/', tra.id]"><i class="glyphicon glyphicon-edit"></i> Editar</a> |

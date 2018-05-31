@@ -36,7 +36,7 @@
     <div *ngIf="traList">
         <div *ngFor="let tra of traList" class="col-md-6">
             <div class="fitxa bg-success">
-                <img class="imagen img-circle pull-right" src="data:image/jpeg;base64,{{tra.imagen}}" />
+                <img class="imagen img-circle pull-right" src="{{tra.imagen}}" />
                 <h1><strong>{{tra.nombre}} {{tra.apellidos}}</strong></h1>
                 <hr />
                 <h2>Usuario: <strong>{{tra.usuario}}</strong></h2>
