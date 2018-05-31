@@ -23,7 +23,7 @@
                     <!--INDEX (TODOS)-->
                     <li [routerLinkActive]="['link-active']">
                         <a [routerLink]="['/index']">
-                            <span class='glyphicon glyphicon-home'></span> Pagina principal
+                            <span class='glyphicon glyphicon-home'></span> Home
                         </a>
                     </li>
                     <!--PERFIL (USUARIO)-->
@@ -41,13 +41,13 @@
                     <!--TODOS IDIOMAS-SERVICIOS (ADMIN)-->
                     <li [routerLinkActive]="['link-active']" class="{{adm}}">
                         <a [routerLink]="['/fetch-Idioma']">
-                            <span class='glyphicon glyphicon-briefcase'></span> Idiomas/Servicios
+                            <span class='glyphicon glyphicon-briefcase'></span> Idiomas<br />&nbsp; &nbsp; &nbsp; &nbsp;Servicios
                         </a>
                     </li>
                     <!--CERRAR SESION (USUARIO)-->
                     <li [routerLinkActive]="['link-active']" class="{{usu}}">
                         <a [routerLink]="['/cerrarsesion']">
-                            <span class='glyphicon  glyphicon-log-out'></span> Cerrar sesión
+                            <span class='glyphicon  glyphicon-log-out'></span> Log Out
                         </a>
                     </li>
                     <li><button (click)="inices()" class="cargarbotones {{usu}}"><strong>Ver menú</strong><br /><h6>debes estar logeado</h6></button></li>
